@@ -10,6 +10,12 @@ let ID = 1;
 
 const port = process.env.PORT
 const app = express()
+
+
+app.use('/imagens', express.static(__dirname + '/arquivos'));
+
+
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
