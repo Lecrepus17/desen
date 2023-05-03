@@ -5,10 +5,12 @@ const express = require("express")
 const bodyParser = require("body-parser")
 const moment = require('moment');
 
-let ID = 1;
     let cursos = [
       { id: 0, nome: 'Curso de Node.js' },
     ];
+    let aluno = [
+        { id: 0, nome: 'pedro', curso: 0, data_nasc:'2006/04/17' },
+      ];
 const port = process.env.PORT
 const app = express()
 
