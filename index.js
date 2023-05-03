@@ -1,10 +1,12 @@
+
+
 require('dotenv').config();
 const express = require("express")
 const bodyParser = require("body-parser")
 const moment = require('moment');
 
-let cursos = []
-let ID = 1
+let cursos = [];
+let ID = 1;
 
 const port = process.env.PORT
 const app = express()
