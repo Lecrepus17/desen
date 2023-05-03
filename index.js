@@ -86,7 +86,7 @@ app.get('/alunos', (req,res) => {
 })
   
   // adiciona um aluno
-app.post('/cursos', (req,res) => {
+app.post('/alunos', (req,res) => {
     const {nome} = req.body
     const {curso} = req.body
     const {data_nasc} = req.body
