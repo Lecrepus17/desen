@@ -2,16 +2,17 @@ require('dotenv').config();
 const express = require("express")
 const bodyParser = require("body-parser")
 const moment = require('moment');
-
+let ID = 1
     let cursos = [
       { id: 0, nome: 'Curso de Node.js' },
     ];
-    let aluno = [
+    let alunos = [
         { id: 0, nome: 'pedro', curso: 0, data_nasc:'2006/04/17' },
       ];
 
 const port = process.env.PORT
 const app = express()
+
 
 // rota imagem
 app.use('/imagens', express.static(__dirname + '/arquivos'));
@@ -22,13 +23,16 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use('/public', express.static('public'))
 
 
+app.get('/alunos', (req, res) =>{
+    res.json(alunos);
+})
+
 
 
 
 app.listen(port, () => {
     console.log(`servidor rodando na porta ${port}`)
 })
-
 
 
 
