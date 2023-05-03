@@ -4,11 +4,9 @@ require('dotenv').config();
 const express = require("express")
 const bodyParser = require("body-parser")
 const moment = require('moment');
-<<<<<<< HEAD
+
 let ID  = 1
-=======
-let ID = 1
->>>>>>> 0852ff370385b163b3216bedd9bc9322808106cf
+
     let cursos = [
       { id: 0, nome: 'Curso de Node.js' },
     ];
@@ -94,8 +92,10 @@ app.get('/alunos', (req,res) => {
   
   // adiciona um aluno
 app.post('/alunos', (req,res) => {
+
     const {nome, curso, data_nasc} = req.body
     alunos.push({id: ID++, nome, curso,data_nasc})
+
     res.json({message: 'OK'})
 })
   
