@@ -5,9 +5,10 @@ const express = require("express")
 const bodyParser = require("body-parser")
 const moment = require('moment');
 
-let cursos = [];
 let ID = 1;
-
+    let cursos = [
+      { id: 0, nome: 'Curso de Node.js' },
+    ];
 const port = process.env.PORT
 const app = express()
 
@@ -30,22 +31,41 @@ app.post('/cursos/alterar/:id', (req, res) => {
     res.json({nome})
 })
 
-app.get('/cursos', (req,res) => {
-    res.json(cursos)
-})
 
-app.post('/cursos', (req,res) => {
-    const {nome} = req.body
-    cursos.push({id: ID++, nome})
-    res.json({message: 'OK'})
-})
+
 
 app.listen(port, () => {
     console.log(`servidor rodando na porta ${port}`)
 })
 
-app.delete('/cursos/:id', (req,res) => {
+
+
+
+// lista todos os cursos
+app.get('/cursos', (req,res) => {
+    res.json(cursos)
+})
+  
+
+
+  // adiciona um curso
+app.post('/cursos', (req,res) => {
+    const {nome} = req.body
+    cursos.push({id: ID++, nome})
+    res.json({message: 'OK'})
+})
+  
+  // altera um curso
+  app.put('/cursos/:id', (req, res) => {
+    const id = req.params.id;
+    const cursoAtualizado = req.body;
+    // lógica para atualizar o curso com o id especificado
+    res.send(`Curso com id ${id} atualizado com sucesso!`);
+  });
+  
+  // remove um curso
+  app.delete('/cursos/:id', (req,res) => {
     const {id} = req.params
     cursos = cursos.filter(c => c.id != id)
-    res.json({message: "eeee"})
+    res.send(`Curso com id ${id} removido com sucesso!`);
 })
