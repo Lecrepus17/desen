@@ -4,9 +4,7 @@ require('dotenv').config();
 const express = require("express")
 const bodyParser = require("body-parser")
 const moment = require('moment');
-
 let ID  = 1
-
     let cursos = [
       { id: 0, nome: 'Curso de Node.js' },
     ];
@@ -15,7 +13,6 @@ let ID  = 1
       ];
 const port = process.env.PORT
 const app = express()
-
 
 // rota imagem
 app.use('/imagens', express.static(__dirname + '/arquivos'));
@@ -26,16 +23,13 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use('/public', express.static('public'))
 
 
-app.get('/alunos', (req, res) =>{
-    res.json(alunos);
-})
-
 
 
 
 app.listen(port, () => {
     console.log(`servidor rodando na porta ${port}`)
 })
+
 
 
 
@@ -67,7 +61,7 @@ app.post('/cursos', (req,res) => {
 
 
   // remove um curso
-  app.delete('/cursos/:id', (req,res) => {
+  app.delete('/cursos/delete/:id', (req,res) => {
     const {id} = req.params
     const curso = cursos.find(c => c.id == id);
     cursos = cursos.filter(c => c.id != id)
@@ -92,12 +86,22 @@ app.get('/alunos', (req,res) => {
   
   // adiciona um aluno
 app.post('/alunos', (req,res) => {
-
-    const {nome, curso, data_nasc} = req.body
-    alunos.push({id: ID++, nome, curso,data_nasc})
-
-    res.json({message: 'OK'})
+  const {nome, curso, data_nasc} = req.body
+  
+  // verifica se o nome do aluno e o id do curso foram informados
+  if (!nome || !data_nasc) {
+      return res.status(400).json({message: 'Nome do aluno e a data de nascimento são obrigatórios '})
+  }
+  
+  // verifica se o curso existe
+  if (!cursos.some(c => c.id === curso)) {
+      return res.status(404).json({message: 'Curso não encontrado'})
+  }
+  
+  alunos.push({id: ID++, nome, curso, data_nasc})
+  res.json({message: 'OK'})
 })
+
   
   // altera um aluno
 
@@ -121,7 +125,7 @@ app.post('/alunos/alterar/:id', (req, res) => {
 
 
 // remove um aluno
-app.delete('/alunos/:id', (req,res) => {
+app.delete('/alunos/delete/:id', (req,res) => {
     const {id} = req.params
     const aluno = alunos.find(a => a.id == id);
     alunos = alunos.filter(a => a.id != id)
