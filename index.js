@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require("express")
 const bodyParser = require("body-parser")
+const moment = require('moment');
 
 let cursos = []
 let ID = 1
