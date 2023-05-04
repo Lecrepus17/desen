@@ -30,7 +30,9 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `programa`.`documentos` (
   `iddocumentos` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(300) NOT NULL,
   `nomeDoc` VARCHAR(300) NOT NULL,
+  `data` DATETIME NOT NULL,
   `usuarios_idusuarios` INT NOT NULL,
   PRIMARY KEY (`iddocumentos`, `usuarios_idusuarios`),
   CONSTRAINT `fk_documentos_usuarios`
