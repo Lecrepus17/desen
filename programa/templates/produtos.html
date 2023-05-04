@@ -1,0 +1,39 @@
+{% extends "inc/base.html" %}
+
+{% block titulo %}Welcome to the jungle{% endblock %}
+
+
+{% block conteudo %}
+
+
+
+
+
+
+  <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
+  <thead class="bg-gray-100 dark:bg-gray-700">
+    <tr>
+      <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">Produtos</th>
+      <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">Preço</th>
+      <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">Ativo</th>
+      <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">Funções</th>
+    </tr>
+  </thead>
+  <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+  {% for pdt in produto %}
+    <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
+      <td  class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><a href="Usuario_ver/{{pdt.idprodutos}}"><button class="bg-purple-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">{{ pdt.nome }}</button></a></td>
+      <td  class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ pdt.preco|number_format(2, ',', '.') }}</td>
+      <td  class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ pdt.ativo }}</td>
+      <td  class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><a href="usuario_apagar/{{ pdt.idprodutos }}"><button class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">apagar</button></a></td>
+    </tr>
+    
+    {% endfor %}
+
+  </tbody>
+</table> 
+
+
+
+
+{% endblock %}

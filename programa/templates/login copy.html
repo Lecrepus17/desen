@@ -1,0 +1,29 @@
+{% include "inc/head.html" %}
+
+{# login.html #}
+{% if erro == 1 %}
+    Usuário ou senha inválido! 😳
+{% elseif erro == 2 %}
+    Voce está tentando acessar uma página restrita,
+    safadinho! 😳
+{% elseif erro == 3 %}
+    Sucesso!
+    Só não erra denovo 😳
+{% endif %}
+<form action="login_verifica.php" method="POST">
+    <div>
+        <input type="text" name="user" placeholder="Usuário">
+    </div>
+    <div>
+        <input type="password" name="pass" placeholder="senha">
+    </div>
+    <div>
+         <input type="submit" value="Acessar">
+    </div>
+</form>
+
+<div>
+    <a href="recuperar_senha.php">Esqueci minha senha</a>
+</div>
+
+  {% include "inc/foot.html" %}

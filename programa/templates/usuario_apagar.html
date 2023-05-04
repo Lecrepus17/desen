@@ -1,0 +1,20 @@
+{% include "inc/head.html" %}
+
+
+<h1>Apagar usuário</h1>
+
+<p>tem certeza de que deseja apagar o usuário: {{ user.username }}?</p>
+
+<p><strong>Você está prestes a apagar o incrivel: {{ user.username }}</strong></p>
+
+<p>Nunca mais será possível recuperar este usuário</p>
+
+<form action="#" method="post">
+    <input type="hidden" name="id" value="{{ user.idusuarios }}">
+    <input type="submit" value="apagar o dito cujo">
+</form>
+
+<div><a href="/usuarios">Cancelar</a></div>
+
+
+{% include "inc/foot.html" %}
