@@ -30,6 +30,7 @@ class Model{
 
     public function getById($id){                                        
         $sql = $this->conex->prepare("SELECT * FROM {$this->table} WHERE idusuarios = :id");
+        
         $sql->bindParam(':id', $id);
         $sql->execute();
         return $sql->fetch(PDO::FETCH_ASSOC);
