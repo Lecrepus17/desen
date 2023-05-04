@@ -3,7 +3,7 @@
 class Model{
     private $driver = 'mysql';
     private $host = 'localhost';
-    private $dbname = 'sistematwig';
+    private $dbname = 'programa';
     private $port = '3306';
     private $user = 'root';
     private $password = null;
@@ -17,7 +17,7 @@ class Model{
         $this->table = $tbl;
         $this->conex = new PDO("{$this->driver}:host={$this->host};port={$this->port};dbname={$this->dbname}", $this->user,$this->password);
     }
-    public function getALL($where = false, $where_glue = 'AND'){
+    public function getAll($where = false, $where_glue = 'AND'){
         if ($where) {
             $where_sql = $this->where_fields($where, $where_glue);
             $sql = $this->conex->prepare("SELECT * FROM {$this->table} WHERE {$where_sql}");
@@ -27,6 +27,7 @@ class Model{
         }
         return $sql->fetchAll(PDO::FETCH_ASSOC);
     }
+
     public function getById($id){                                        
         $sql = $this->conex->prepare("SELECT * FROM {$this->table} WHERE idusuarios = :id");
         $sql->bindParam(':id', $id);
