@@ -49,24 +49,23 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `programa`.`compartilhamentos` (
   `idcompartilhamentos` INT NOT NULL AUTO_INCREMENT,
-  `iddocumentosCom` INT NOT NULL,
-  `idusuariosDocCom` INT NOT NULL,
-  `idusuariosCom` INT NOT NULL,
+  `idDocCom` INT NOT NULL,
+  `idUserDocCom` INT NOT NULL,
+  `idUserCom` INT NOT NULL,
   `visualizar` TINYINT NULL,
   `alterar` TINYINT NULL,
   `excluir` TINYINT NULL,
-  PRIMARY KEY (`idcompartilhamentos`, `iddocumentosCom`, `idusuariosDocCom`, `idusuariosCom`),
+  PRIMARY KEY (`idcompartilhamentos`, `idDocCom`, `idUserDocCom`, `idUserCom`),
   CONSTRAINT `fk_compartilhamentos_documentos1`
-    FOREIGN KEY (`iddocumentosCom` , `idusuariosDocCom`)
+    FOREIGN KEY (`idDocCom` , `idUserDocCom`)
     REFERENCES `programa`.`documentos` (`iddocumentos` , `usuarios_idusuarios`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_compartilhamentos_usuarios1`
-    FOREIGN KEY (`idusuariosCom`)
+    FOREIGN KEY (`idUserCom`)
     REFERENCES `programa`.`usuarios` (`idusuarios`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

@@ -5,8 +5,7 @@
     require('models/Documento.php');
     require('models/Usuario.php');
     $doc = new Documento();
-    $teste = 1;
-    $documentos = $doc->getALL(['usuarios_idusuarios' => $teste]);
+    $documentos = $doc->getALL(['usuarios_idusuarios' => $_SESSION['user']]);
     echo $twig->render('documentos_lista.html', [
         'doc' => $documentos,
         ]);

@@ -60,20 +60,20 @@ class Model{
         $upd->execute($data);
     }
 
-    private function map_fields($data){
+    public function map_fields($data){
         foreach (array_Keys($data) as $field ){
             $sql_fields[] = "{$field} = :{$field}";
         }     
         return $sql_fields;
 
     }
-    private function sql_fields($data){
+    public function sql_fields($data){
         
         $sql_fields = $this->map_fields($data);
         return implode(', ', $sql_fields);
 
     }
-    private function where_fields($data, $glue = 'AND'){
+    public function where_fields($data, $glue = 'AND'){
         $glue = $glue == 'OR' ? ' OR ' : ' AND '; 
         $sql_fields = $this->map_fields($data);
         return implode($glue, $sql_fields);
