@@ -15,15 +15,25 @@
         
         move_uploaded_file($_FILES['arquivo']['tmp_name'], 'uploads/' . $arquivo);
 
+        $timezone = new DateTimeZone('America/Sao_Paulo');
+        $agora = new DateTime('now', $timezone);
+        $data_formatada = $agora->format('Y-m-d H:i:s');
+
         $doc = new Documento();
         $doc->create([
             'nome' => $_POST['nome'],
             'nomeDoc' => $nomeDoc,
-            'usuarios_idusuarios' => 1
+            'usuarios_idusuarios' => 1,
+            'data' => $data_formatada
             ]);
-
-
+          
+            header('location: documentos_lista.php');
     }
+    
+
+    
+
+
 
 
     echo $twig->render('documentos_novo.html');
