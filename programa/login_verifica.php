@@ -30,7 +30,7 @@ if($sql->rowCount()){
     //Redireciona 
     header('location: tela.php');
     die;
-} else {echo "132 45434 ";
+} else {
 
     //Falha no login
     //header('location: login.php');
