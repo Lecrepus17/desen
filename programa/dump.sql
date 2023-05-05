@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS `programa`.`usuarios` (
   `idusuarios` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(300) NOT NULL,
   `senha` VARCHAR(300) NOT NULL,
+  `email` VARCHAR(300) NOT NULL,
   PRIMARY KEY (`idusuarios`))
 ENGINE = InnoDB;
 

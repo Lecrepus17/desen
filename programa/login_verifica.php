@@ -18,6 +18,7 @@ if($sql->rowCount()){
     //Login feito com sucesso
 
     $user = $sql->fetch(PDO::FETCH_OBJ);
+  
 
     if(!password_verify($pass, $user->senha)){
         header('location: login.php');
@@ -27,13 +28,16 @@ if($sql->rowCount()){
     //Cria uma sessão para armazenar o usuário
     session_start();
     $_SESSION['user'] = $user->idusuarios;
+     
     //Redireciona 
     header('location: tela.php');
     die;
 } else {
 
     //Falha no login
-    //header('location: login.php');
+    header('location: login.php');
     die;
 }
+
+
 

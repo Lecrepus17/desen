@@ -10,12 +10,6 @@
         ]);
 
 
-
-
-
-
-
-
         //echo md5($pass); nao use
         //echo sha1($pass); nao use
         
