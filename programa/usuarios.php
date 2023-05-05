@@ -8,7 +8,7 @@ require('models/Usuario.php');
 $user = new Usuario();
 $usuarios = $user->getAll();
 
-echo $twig->render('usuarios.html',[
+echo $twig->render('documentos_lista.html',[
     'user' => $usuarios,
 ]);
 

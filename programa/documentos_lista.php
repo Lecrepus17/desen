@@ -1,4 +1,5 @@
 <?php
+    require('verifica_session.php');
     require('twig_carregar.php');
     require('models/Model.php');
     require('models/Documento.php');

@@ -30,12 +30,12 @@ if($sql->rowCount()){
     $_SESSION['user'] = $user->idusuarios;
      
     //Redireciona 
-    header('location: tela.php');
+    header('location: documentos_lista.php');
     die;
 } else {
 
     //Falha no login
-    header('location: login.php');
+    header('location: login.php?erro=1');
     die;
 }
 

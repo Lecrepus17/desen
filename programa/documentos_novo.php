@@ -1,4 +1,5 @@
 <?php
+    require('verifica_session.php');
     require('twig_carregar.php');
     require('func/sanitize_filename.php');
     require('func/verifica_nome_arquivo.php');
