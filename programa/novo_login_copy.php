@@ -6,6 +6,5 @@
      <div><input type="submit" value="Gravar"></div>
  </form>
 
-  <a href="logout.php">Tenho login</a>
 
  

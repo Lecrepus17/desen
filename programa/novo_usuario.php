@@ -6,6 +6,9 @@ $nome = $_POST['nome'] ?? false;
 $pass = $_POST['pass'] ?? false;
 $email = $_POST['email'] ?? false;
 
+
+$pass = password_hash($pass, PASSWORD_BCRYPT);
+
 $usr = new Usuario();
 $usr->create([
     'nome' => $nome,
