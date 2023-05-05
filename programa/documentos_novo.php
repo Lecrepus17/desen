@@ -1,5 +1,4 @@
 <?php
-    require('verifica_session.php');
     require('twig_carregar.php');
     require('func/sanitize_filename.php');
     require('func/verifica_nome_arquivo.php');
@@ -24,7 +23,7 @@
         $doc->create([
             'nome' => $_POST['nome'],
             'nomeDoc' => $nomeDoc,
-            'usuarios_idusuarios' => 1,
+            'usuarios_idusuarios' => $_SESSION['user'],
             'data' => $data_formatada
             ]);
           
