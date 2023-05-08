@@ -19,8 +19,8 @@
             {% for docs in doc %}
                 {% if docs.iddocumentos == comp.idDocCom %}
               <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
-                <td  class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><a href="Usuario_ver/{{docs.iddocumentos}}"><button class="bg-purple-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">{{ docs.nome }}</button></a></td>
-                <td  class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><a href="usuario_apagar/{{ docs.iddocumentos }}"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Compartilhar</button></a><a href="usuario_apagar/{{ docs.iddocumentos }}"><button class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">apagar</button></a></td>
+                <td  class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><a href="documento.php?view={{ comp.idDocCom }}"><button class="bg-purple-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">{{ docs.nome }}</button></a></td>
+                <td  class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><a href="comp.php?view={{ comp.idDocCom }}"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Compartilhar</button></a><a href="func.php?view={{ comp.idDocCom }}"><button class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">apagar</button></a></td>
               </tr>
               {% endif %}
               {% endfor %}
