@@ -6,6 +6,10 @@
     require('models/Model.php');
     require('models/Documento.php');
 
+    $id = $_POST['id'] ?? $_GET['view'] ?? false;
+    $tipo = $_POST['tipo'] ?? $_GET['tipo'] ?? false;
+
+    if($tipo == 'novo'){
     if($_SERVER['REQUEST_METHOD'] == 'POST' && !$_FILES['arquivo']['error']){
 
         $arquivo = sanitize_filename($_FILES['arquivo']['name']);
@@ -29,15 +33,28 @@
             ]);
           
             header('location: documentos_lista.php');
+    }else{
+    echo $twig->render('documentos_novo.html', ['tipo' => 'novo']);
+}}elseif($tipo == 'altera'){
+    if($_SERVER['REQUEST_METHOD'] == 'POST' && !$_FILES['arquivo']['error']){
+        if($_FILES['arquivo']['name']){
+        $arquivo = sanitize_filename($_FILES['arquivo']['name']);
+        $arquivo = verifica_nome_arquivo('uploads/',$arquivo);
+        move_uploaded_file($_FILES['arquivo']['tmp_name'], 'uploads/' . $arquivo);
+        $nomeDoc = 'uploads/'.$arquivo;
+        }else{
+            $nomeDoc = $_POST['docsalvo'];
+        }
+        $doc = new Documento();
+        $doc->update([
+            'nome' => $_POST['nome'],
+            'nomeDoc' => $nomeDoc,
+        ], $id);
+        header('location: documentos_lista.php');
+    }else{
+        $doc = new Documento();
+        $documento = $doc->getById($id);  
+        echo $twig->render('documentos_novo.html', ['tipo' => 'altera', 'doc' => $documento]);   
     }
-    
+}
 
-    
-
-
-
-
-    echo $twig->render('documentos_novo.html');
-
-
-    

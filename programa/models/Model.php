@@ -29,8 +29,14 @@ class Model{
     }
 
     public function getById($id){                                        
-        $sql = $this->conex->prepare("SELECT * FROM {$this->table} WHERE idusuarios = :id");
+        $sql = $this->conex->prepare("SELECT * FROM {$this->table} WHERE iddocumentos = :id");
         
+        $sql->bindParam(':id', $id);
+        $sql->execute();
+        return $sql->fetch(PDO::FETCH_ASSOC);
+    }
+    public function delete($id){                                        
+        $sql = $this->conex->prepare("DELETE FROM {$this->table} WHERE iddocumentos = :id");
         $sql->bindParam(':id', $id);
         $sql->execute();
         return $sql->fetch(PDO::FETCH_ASSOC);
@@ -53,7 +59,7 @@ class Model{
         unset($data['id']);
         $sql = "UPDATE {$this->table}";
         $sql .= ' SET ' . $this->sql_fields($data);
-        $sql .= " WHERE idusuarios = :id";
+        $sql .= " WHERE iddocumentos = :id";
         $data['id'] = $id;
         $upd = $this->conex->prepare($sql);
         $upd->bindParam(':id', $id);       
