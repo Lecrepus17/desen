@@ -38,7 +38,7 @@
     }else{
     echo $twig->render('documentos_novo.html', ['tipo' => 'novo']);
 }}elseif($tipo == 'altera'){
-    if($_SERVER['REQUEST_METHOD'] == 'POST' && !$_FILES['arquivo']['error']){
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
         $doc = new Documento();
         $documento = $doc->getById($id);
