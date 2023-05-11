@@ -5,6 +5,7 @@
     require('func/verifica_nome_arquivo.php');
     require('models/Model.php');
     require('models/Documento.php');
+    require('models/Compartilhamento.php');
     require('func/verifica_permissao.php');
 
     $id = $_POST['id'] ?? $_GET['view'] ?? false;
@@ -41,9 +42,11 @@
 
         $doc = new Documento();
         $documento = $doc->getById($id);
-        $ver = verifica_permissao($documento);
+        $comp = new Compartilhamento();
+        $compartilhamento = $comp->getByIdComp($_SESSION['user']);
+        $ver = verifica_permissao($documento, $compartilhamento);
 
-        if($permissao >=2){
+        if($ver >=2){
         if($_FILES['arquivo']['name']){
         $arquivo = sanitize_filename($_FILES['arquivo']['name']);
         $arquivo = verifica_nome_arquivo('uploads/',$arquivo);
