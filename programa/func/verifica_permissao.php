@@ -1,11 +1,17 @@
 <?php
 
-function verifica_pesmissao($id){
-    if('excluir' == '1'){
-        require('pdo.inc.php');
-        $sql = $pdo->prepare('DELETE FROM documentos WHERE iddocumentos = :id');
-        $sql->bindParam(':id', $id);
-        $sql->execute();
+function verifica_pesmissao($comp){
+    if($comp['visualizar'] == '1'){
+        $permissao = 1;
+        return $permissao;
+
+        }elseif($comp['alterar'] == '2'){
+            $permissao = 2;
+            return $permissao;
+
+        }elseif($comp['excluir'] == '3'){
+        $permissao = 3;
+        return $permissao;
     }
 }
 
