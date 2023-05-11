@@ -5,7 +5,6 @@
     require('models/Documento.php');
     require('func/search.php');
 
-
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $resultado = search($_POST['pesquisa']);
         echo $twig->render('documentos_lista.html', [
@@ -25,4 +24,7 @@
 
 
 
+
+
     
+
