@@ -85,6 +85,8 @@ class Model{
         return implode($glue, $sql_fields);
 
     }
+
+    
 }
 
 
