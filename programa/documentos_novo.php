@@ -5,6 +5,7 @@
     require('func/verifica_nome_arquivo.php');
     require('models/Model.php');
     require('models/Documento.php');
+    require('func/verifica_permissao.php');
 
     $id = $_POST['id'] ?? $_GET['view'] ?? false;
     $tipo = $_POST['tipo'] ?? $_GET['tipo'] ?? false;
@@ -37,6 +38,12 @@
     echo $twig->render('documentos_novo.html', ['tipo' => 'novo']);
 }}elseif($tipo == 'altera'){
     if($_SERVER['REQUEST_METHOD'] == 'POST' && !$_FILES['arquivo']['error']){
+
+        $doc = new Documento();
+        $documento = $doc->getById($id);
+        $ver = verifica_permissao($documento);
+
+        if($permissao >=2){
         if($_FILES['arquivo']['name']){
         $arquivo = sanitize_filename($_FILES['arquivo']['name']);
         $arquivo = verifica_nome_arquivo('uploads/',$arquivo);
@@ -50,7 +57,7 @@
             'nome' => $_POST['nome'],
             'nomeDoc' => $nomeDoc,
         ], $id);
-        header('location: documentos_lista.php');
+        header('location: documentos_lista.php');}else{header('location: documentos_part.php');}
     }else{
         $doc = new Documento();
         $documento = $doc->getById($id);  
