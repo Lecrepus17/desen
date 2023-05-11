@@ -13,9 +13,9 @@ $result = $sql->fetch(PDO::FETCH_ASSOC);
 
 if($sql){
     $id = $result->iddocumentos;
-    header("location: documentos_lista.php".$id);
+    header("location: sim.php".$id);
 }else{
-    header('location: documentos_lista.php');
+    header('location: nao.php');
 }
 
 

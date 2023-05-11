@@ -5,16 +5,29 @@
     require('models/Compartilhamento.php');
     require('models/Usuario.php');
     require('models/Documento.php');
+    require('func/search.php');
 
-    $com = new Compartilhamento();
-    $doc = new Documento();
-    $compartilhamentos = $com->getIdDoc(['idUserCom' => $_SESSION['user']]);
-    $documentos = $doc->getALL();
 
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $resultado = search2($_POST['pesquisa']);
+        echo $twig->render('documentos_lista.html', [
+            'doc' => $resultado,
+            ]);
+    }else{
+ 
+        $com = new Compartilhamento();
+        $doc = new Documento();
+        $compartilhamentos = $com->getIdDoc(['idUserCom' => $_SESSION['user']]);
+        $documentos = $doc->getALL();
     
-    echo $twig->render('documentos_part.html', [
-        'doc' => $documentos,
-        'com' => $compartilhamentos
-        ]);
+        
+        echo $twig->render('documentos_part.html', [
+            'doc' => $documentos,
+            'com' => $compartilhamentos
+            ]);
+    }
+
+
+
 
     

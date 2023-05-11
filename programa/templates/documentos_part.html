@@ -3,7 +3,24 @@
 
     {% block conteudo %}
         <h1>Documentos</h1>
+        <div class="mb-3">
+          <form action="#" method="post">
+            <div class="relative mb-2 flex w-full flex-wrap items-stretch">
+            <input class="border-2 border-solid border-neutral-300 focus:border-primary" name="pesquisa" type="search" placeholder="Pesquisa" id="campoTexto">
+            
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" id="toggleBtn" type="button">Data</button>
     
+            <!--Search button-->
+            <button
+              class="relative z-[2] rounded-r border-2 border-primary px-6 py-2 text-xs font-medium uppercase text-primary transition duration-150 ease-in-out hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0"
+              type="submit"
+              id="button-addon3">
+              Search
+            </button>
+          </div>
+          </form>
+          
+        </div>
         <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
             <thead class="bg-gray-100 dark:bg-gray-700">
               <tr>

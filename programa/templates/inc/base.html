@@ -157,6 +157,17 @@
 <script>
 	/* Progress bar */
 	//Source: https://alligator.io/js/progress-bar-javascript-css-variables/
+	const toggleBtn = document.getElementById('toggleBtn');
+const campoTexto = document.getElementById('campoTexto');
+
+toggleBtn.addEventListener('click', function() {
+  if (campoTexto.type === 'text') {
+    campoTexto.type = 'date';
+  } else {
+    campoTexto.type = 'text';
+  }
+});
+
 	var h = document.documentElement,
 		  b = document.body,
 		  st = 'scrollTop',
