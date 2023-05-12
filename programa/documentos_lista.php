@@ -14,8 +14,11 @@
  
         $doc = new Documento();
         $documentos = $doc->getALL(['usuarios_idusuarios' => $_SESSION['user']]);
+
+
         echo $twig->render('documentos_lista.html', [
             'doc' => $documentos,
+            'data' => $data_formatada
             ]);
     }
 
