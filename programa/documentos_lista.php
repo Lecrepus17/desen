@@ -18,7 +18,6 @@
 
         echo $twig->render('documentos_lista.html', [
             'doc' => $documentos,
-            'data' => $data_formatada
             ]);
     }
 

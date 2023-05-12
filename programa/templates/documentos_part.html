@@ -24,6 +24,7 @@
             <thead class="bg-gray-100 dark:bg-gray-700">
               <tr>
                 <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">Nome</th>
+                <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">Data de upload</th>
                 <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">Funções</th>
               </tr>
             </thead>
@@ -36,6 +37,7 @@
                 {% if docs.iddocumentos == comp.iddocumentos %}
               <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
                 <td  class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><a href="documento.php?view={{ comp.idDocCom }}"><button class="bg-purple-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">{{ docs.nome }}</button></a></td>
+                <td  class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ docs.data|date("d/m/Y") }}</td>
                 <td  class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><a href="documentos_novo.php?view={{docs.iddocumentos}}&tipo=altera&pag=part"><button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">Alterar</button></a><a href="func.php?view={{ docs.iddocumentos }}&pag=part"><button class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">apagar</button></a>
                 </td>
               </tr>
