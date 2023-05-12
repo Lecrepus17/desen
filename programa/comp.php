@@ -16,9 +16,7 @@
             'iddocumentos' => $iddoc,
             'idUserDocCom' => $_SESSION['user'],
             'idUserCom' => $id,
-            'visualizar' => '1',
-            'alterar' => '0',
-            'excluir' => '0',
+            'nivel_per' => '1',
         ]);
             header('location: documentos_lista.php');
     }elseif($tipo == 'alterar'){
@@ -30,9 +28,7 @@
             'iddocumentos' => $iddoc,
             'idUserDocCom' => $_SESSION['user'],
             'idUserCom' => $id,
-            'visualizar' => '1',
-            'alterar' => '1',
-            'excluir' => '0',
+            'nivel_per' => '2',
         ]);
         header('location: documentos_lista.php');
     }elseif($tipo == 'excluir'){
@@ -43,9 +39,7 @@
             'iddocumentos' => $iddoc,
             'idUserDocCom' => $_SESSION['user'],
             'idUserCom' => $id,
-            'visualizar' => '1',
-            'alterar' => '1',
-            'excluir' => '1',
+            'nivel_per' => '3',
         ]);
             header('location: documentos_lista.php');
         }

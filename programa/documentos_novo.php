@@ -6,8 +6,7 @@
     require('models/Model.php');
     require('models/Documento.php');
     require('models/Compartilhamento.php');
-    require('func/verifica_permissao.php');
-
+    $pag = $_GET['pag'] ?? $_POST['pag'] ?? false;
     $id = $_POST['id'] ?? $_GET['view'] ?? false;
     $tipo = $_POST['tipo'] ?? $_GET['tipo'] ?? false;
 
@@ -43,10 +42,8 @@
         $doc = new Documento();
         $documento = $doc->getById($id);
         $comp = new Compartilhamento();
-        $compartilhamento = $comp->getByIdComp($_SESSION['user']);
-        $ver = verifica_permissao($documento, $compartilhamento);
-
-        if($ver >=2){
+        $compartilhamento = $comp->getByIdComp($id);
+        if($compartilhamento['nivel_per'] >= 2 or $_SESSION['user'] == $documento['usuarios_idusuarios']){
         if($_FILES['arquivo']['name']){
         $arquivo = sanitize_filename($_FILES['arquivo']['name']);
         $arquivo = verifica_nome_arquivo('uploads/',$arquivo);
@@ -60,11 +57,13 @@
             'nome' => $_POST['nome'],
             'nomeDoc' => $nomeDoc,
         ], $id);
-        header('location: documentos_lista.php');}else{header('location: documentos_part.php');}
+        header("location: documentos_$pag.php");
+}
+        else{header("location: documentos_$pag.php");}
     }else{
         $doc = new Documento();
         $documento = $doc->getById($id);  
-        echo $twig->render('documentos_novo.html', ['tipo' => 'altera', 'doc' => $documento]);   
+        echo $twig->render('documentos_novo.html', ['tipo' => 'altera', 'doc' => $documento, 'pag' => $pag]);   
     }
 }
 

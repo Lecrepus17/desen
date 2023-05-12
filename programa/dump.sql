@@ -49,9 +49,7 @@ CREATE TABLE IF NOT EXISTS `programa`.`compartilhamentos` (
   `iddocumentos` INT NOT NULL,
   `idUserDocCom` INT NOT NULL,
   `idUserCom` INT NOT NULL,
-  `visualizar` TINYINT NULL,
-  `alterar` TINYINT NULL,
-  `excluir` TINYINT NULL,
+  `nivel_per` INT NULL,
   PRIMARY KEY (`idcompartilhamentos`, `iddocumentos`, `idUserDocCom`, `idUserCom`),
   CONSTRAINT `fk_compartilhamentos_documentos1`
     FOREIGN KEY (`iddocumentos` , `idUserDocCom`)
@@ -62,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `programa`.`compartilhamentos` (
     FOREIGN KEY (`idUserCom`)
     REFERENCES `programa`.`usuarios` (`idusuarios`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE NO ACTION);
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

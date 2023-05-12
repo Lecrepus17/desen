@@ -6,10 +6,8 @@
 
     $iddoc = $_GET['iddoc'] ?? false;
     $idpes = $_GET['idpes'] ?? false;
-    $visualizar = $_GET['visualizar'] ?? 0;
-    $alterar = $_GET['alterar'] ?? 0;   
-    $excluir = $_GET['excluir'] ?? 0;
+    $nivel = $_GET['nivel'] ?? 0;
 
     $comp = new Compartilhamento();
-    $comp = $comp->create(['idDocCom' => $iddoc,'idUserDocCom' => $_SESSION['user'],'idUserCom' => $iddoc, 'visualizar' => $visualizar,'alterar' => $alterar,'excluir' => $excluir,]);
+    $comp = $comp->create(['idDocCom' => $iddoc,'idUserDocCom' => $_SESSION['user'],'idUserCom' => $iddoc, 'nivel_per' => $visualizar,]);
     header('location: documentos_lista.php');
